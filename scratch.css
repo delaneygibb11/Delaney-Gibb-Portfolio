@@ -1,0 +1,269 @@
+/* scratch.css — Custom stylesheet for basketball scratch page */
+
+/* === Font & Base === */
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Source+Serif+4:ital,wght@0,300;0,400;1,300&display=swap');
+
+:root {
+  --orange: #f46f1a;
+  --dark: #141414;
+  --mid: #1e1e1e;
+  --light-gray: #a0a0a0;
+  --cream: #f5f0e8;
+  --white: #ffffff;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--dark);
+  color: var(--white);
+  font-family: 'Source Serif 4', Georgia, serif;
+  font-weight: 300;
+  line-height: 1.75;
+}
+
+/* === Typography === */
+h1, h2, h3, .display {
+  font-family: 'Bebas Neue', Impact, sans-serif;
+  letter-spacing: .05em;
+  line-height: 1;
+  color: var(--white);
+}
+
+h1 { font-size: clamp(3.5rem, 10vw, 7rem); }
+h2 { font-size: clamp(2rem, 5vw, 3.5rem); color: var(--orange); }
+h3 { font-size: 1.6rem; color: var(--cream); }
+
+p {
+  font-size: 1rem;
+  color: var(--light-gray);
+  line-height: 1.8;
+}
+
+a {
+  color: var(--orange);
+  text-decoration: none;
+  transition: opacity .2s;
+}
+
+a:hover { opacity: .75; }
+
+/* === Layout Divs === */
+
+/* Div 1: Full-width hero section */
+div.hero {
+  background-color: var(--dark);
+  background-image:
+    radial-gradient(circle at 80% 50%, rgba(244,111,26,.15) 0%, transparent 60%),
+    repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 40px,
+      rgba(255,255,255,.013) 40px,
+      rgba(255,255,255,.013) 41px
+    );
+  min-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 4rem 5%;
+  position: relative;
+  overflow: hidden;
+}
+
+div.hero::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, var(--orange), transparent);
+}
+
+/* Div 2: Content section block */
+div.content-section {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 4rem 5%;
+}
+
+/* Div 3: Card grid container */
+div.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.5rem;
+  margin: 2rem 0;
+}
+
+/* Div 4: Individual card */
+div.card {
+  background: var(--mid);
+  border-left: 3px solid var(--orange);
+  padding: 1.5rem;
+  border-radius: 0 4px 4px 0;
+  transition: transform .2s;
+}
+
+div.card:hover { transform: translateY(-3px); }
+
+div.card h3 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.4rem;
+  color: var(--orange);
+  margin-bottom: .5rem;
+}
+
+div.card p { font-size: .92rem; }
+
+/* Div 5: Dark section */
+div.dark-section {
+  background: var(--mid);
+  padding: 4rem 5%;
+}
+
+/* === Utility === */
+.eyebrow {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: .85rem;
+  letter-spacing: .3em;
+  color: var(--orange);
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: .5rem;
+}
+
+.orange { color: var(--orange); }
+.cream { color: var(--cream); }
+
+.divider {
+  width: 60px;
+  height: 3px;
+  background: var(--orange);
+  margin: 1.5rem 0;
+}
+
+/* === Navigation === */
+nav.scratch-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.25rem 5%;
+  background: rgba(20,20,20,.97);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  border-bottom: 1px solid rgba(244,111,26,.2);
+}
+
+nav.scratch-nav .brand {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.5rem;
+  color: var(--orange);
+  letter-spacing: .1em;
+}
+
+nav.scratch-nav ul {
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+}
+
+nav.scratch-nav ul a {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: .95rem;
+  letter-spacing: .12em;
+  color: rgba(255,255,255,.7);
+}
+
+nav.scratch-nav ul a:hover { color: var(--orange); opacity: 1; }
+
+/* === Lists === */
+ul.styled-list {
+  list-style: none;
+  padding: 0;
+}
+
+ul.styled-list li {
+  padding: .5rem 0 .5rem 1.5rem;
+  position: relative;
+  color: var(--light-gray);
+  font-size: .95rem;
+}
+
+ul.styled-list li::before {
+  content: '▸';
+  position: absolute;
+  left: 0;
+  color: var(--orange);
+}
+
+ol.ranked-list {
+  padding-left: 1.5rem;
+  color: var(--light-gray);
+}
+
+ol.ranked-list li { padding: .4rem 0; font-size: .95rem; }
+ol.ranked-list li::marker { color: var(--orange); font-family: 'Bebas Neue', sans-serif; font-size: 1rem; }
+
+/* === Image === */
+img.court-img {
+  width: 100%;
+  max-height: 420px;
+  object-fit: cover;
+  border-radius: 2px;
+  display: block;
+  border: 2px solid rgba(244,111,26,.3);
+}
+
+/* === Video embed === */
+div.video-wrap {
+  position: relative;
+  width: 100%;
+  padding-bottom: 56.25%;
+  height: 0;
+  overflow: hidden;
+  border-radius: 4px;
+  border: 2px solid rgba(244,111,26,.3);
+}
+
+div.video-wrap iframe {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+/* === Tableau === */
+div.tableau-wrap {
+  width: 100%;
+  overflow-x: auto;
+  margin-top: 1.5rem;
+  border: 1px solid rgba(244,111,26,.2);
+  border-radius: 4px;
+  padding: 1rem;
+  background: #1a1a1a;
+}
+
+/* === Footer === */
+footer.scratch-footer {
+  background: #0a0a0a;
+  text-align: center;
+  padding: 2.5rem 5%;
+  color: rgba(255,255,255,.3);
+  font-size: .85rem;
+  border-top: 1px solid rgba(244,111,26,.2);
+}
+
+footer.scratch-footer a { color: var(--orange); }
+
+/* === Anchor highlight === */
+:target::before {
+  content: '';
+  display: block;
+  height: 80px;
+  margin-top: -80px;
+}
